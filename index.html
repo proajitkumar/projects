@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div id="wrapper">
+                <svg>
+                    <circle id="circle"></circle>
+                </svg>
+                <div class="col-1">
+                    <a class="btn" id="start-btn" onclick="start()">
+                        <span> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Start</span>
+                    </a>
+                    <a class="btn" id="done-btn" onclick="done()">
+                        <span id="check-icon">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </span>
+                        <span id="col-d">Done</span>
+                    </a>
+                </div>
+                <div id="decoration">
+                    <span data-l="-10" data-t="-20"></span>
+                    <span data-l="-42" data-t="-40"></span>
+                    <span data-l="-53" data-t="-10"></span>
+                    <span data-l="-24" data-t="-17"></span>
+                    <span data-l="-38" data-t="-49"></span>
+                    <span data-l="-09" data-t="-29"></span>
+                    <span data-l="-04" data-t="-56"></span>
+                    <span data-l="-14" data-t="-16"></span>
+                    <span data-l="-14" data-t="-25"></span>
+                    <span data-l="24" data-t="-56"></span>
+                    <span data-l="24" data-t="28"></span>
+                    <span data-l="50" data-t="-17"></span>
+                    <span data-l="45" data-t="15"></span>
+                    <span data-l="24" data-t="-26"></span>
+                    <span data-l="-04" data-t="20"></span>
+                    <span data-l="-34" data-t="22"></span>
+                    <span data-l="-25" data-t="30"></span>
+                    <span data-l="-14" data-t="40"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+
+// Start Animation
+    const wrapper = document.getElementById('wrapper');
+    var startBtn = document.querySelector('#start-btn');
+    var doneBtn = document.querySelector('#done-btn');
+    var count = 1;
+    function start(){
+        wrapper.classList.add('firstAnim');
+        setTimeout(() => {
+            var t = setInterval(() => {
+                startBtn.innerHTML = `<span style="font-size: 40px;color:#fff;">${count}<small style="font-size: 20px;color:#fff;">%</small></span>`;
+                count += 1;
+            }, 6000/100);
+            setTimeout(() => {
+                clearInterval(t);
+                startBtn.classList.add("moveUp");
+                doneBtn.classList.add("moveUp");
+            }, 6000);
+            setTimeout(() => {
+                wrapper.classList.add('secondAnim');
+            }, 8500);
+        }, 1500);
+    }
+
+
+// Last Animation
+    var decoItem = document.querySelectorAll('#decoration span');
+    var doneText = document.querySelector('#col-d');
+    var checkIcon = document.querySelector('#check-icon');
+    function done(){
+        doneText.style.display = "none";
+        checkIcon.animate([{transform: `translate(calc(-50% - 0px), -50%)`}], {duration: 100,iterations: 1, fill: 'forwards'});
+        wrapper.classList.add('lastAnim');
+        decoItem.forEach(item => {
+            const left = item.dataset.l;
+            const top = item.dataset.t;
+            console.log(left);
+            console.log(top);
+            item.style.display = 'block';
+            item.animate([{transform: `translate(${left*0.0}px, ${top*0.0}px`, opacity: 1.00},
+                          {transform: `translate(${left*1.0}px, ${top*1.0}px`, opacity: 0.75},
+                          {transform: `translate(${left*1.5}px, ${top*1.5}px`, opacity: 0.50},
+                          {transform: `translate(${left*2.0}px, ${top*2.0}px`, opacity: 0.00}],
+                          {duration: 500,iterations: 1, fill: 'forwards'});
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    body{
+        background: #1f1f1f;
+    }
+    #container{
+        padding-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    #container .box{
+        width: calc(100vw / 20);
+        height: calc(100vh / 13);
+        transform-style: preserve-3d;
+        transform:rotateX(-20deg);
+        transform-origin: center;
+        position: relative;
+        margin-top: 0.5%;
+        transition: all 2.5s ease-in;
+    }
+    #container .box span{
+        width: 70.71%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: translateZ(-50px);
+        position: absolute;
+    }
+    #container .box span:nth-child(1){
+        background: #161511;
+        box-shadow: inset -16px -14px 15px -4px #0000005b;
+        width: 70.71%;
+        right: 0;
+        transform: rotateY(45deg);
+        transform-origin: right;
+    }
+    #container .box span:nth-child(2){
+        box-shadow: inset 32px -40px 43px 1px #000000b2;
+        background: #626262;
+        width: 72.5%;
+        left: 0;
+        transform: rotateY(-45deg);
+        transform-origin: left;
+    }
+    #container .box span:nth-child(3){
+        background: #4aced3;
+        width: 70.71%;
+        transform: rotateY(45deg);
+        transform-origin: left;
+    }
+    #container .box span:nth-child(4){
+        background: #5bfaff;
+        width: 71.78%;
+        right: 0;
+        transform: rotateY(-45deg);
+        transform-origin: right;
+    }
+    #container .box span:nth-child(5){
+        background: #2f2e2c;
+        width: 70.71%;
+        height: 92.71%;
+        left: 0;
+        top: -45%;
+        transform:  rotateX(90deg) 
+                    rotateY(00deg)
+                    rotateZ(315deg)
+                    translate(0%,50%);
+        transform-origin: left;
+        transition: all 2.5s ease-in;
+    }
+
+    #container .box:hover{
+        transform: rotateX(-20deg) rotateY(-180deg);
+        transition: all 0.4s ease-in-out;
+    }
+    #container .box:hover span:nth-child(5){
+        transition: all 0.4s ease;
+        background: #73e0e4;
+    }
+
+
+</style>
+<body>
+    <div id="container">
+    </div>
+    
+    <script>
+        let container = document.getElementById('container');
+        var fragment = document.createDocumentFragment();
+        var fragmentSpan = document.createDocumentFragment();
+        
+        for (let i = 0; i < 220; i++) {
+            let [span1,span2,span3,span4,span5] = 
+            [document.createElement("span"),
+            document.createElement("span"),
+            document.createElement("span"),
+            document.createElement("span"),
+            document.createElement("span")];
+            
+            
+            let div = document.createElement("div");
+            div.className = "box";
+            fragment.appendChild(div);
+            div.append(span1, span2, span3, span4, span5);
+            if (i >= 20 && i <= 39) {
+                div.style.left = "2.5%";
+            }
+            else if (i >= 60 && i <= 79){
+                div.style.left = "2.5%";
+            }
+            else if (i >= 100 && i <= 119){
+                div.style.left = "2.5%";
+            }
+            else if (i >= 140 && i <= 159){
+                div.style.left = "2.5%";
+            }
+            else if (i >= 180 && i <= 199){
+                div.style.left = "2.5%";
+            }
+        }
+        container.appendChild(fragment);
+    </script>
+</body>
+</html>

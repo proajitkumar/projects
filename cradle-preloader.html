@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hang</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: linear-gradient(360deg, #ffffff, #979797);
+    }
+    .container{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        display: grid;
+        place-items: center;
+    }
+    .wrapper{
+        width: 400px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    #stick{
+        position: absolute;
+        display: block;
+        background: linear-gradient(to bottom, #fff, #323232);
+        width:310px;
+        height: 15px;
+        top: -14px;
+        z-index: 10;
+        border-radius: 10px;
+    }
+    .panel{
+        position: relative;
+        width: 70px;
+        transform-origin: top;
+    }
+    .panel .rope{
+        position: absolute;
+        border-radius: 10px;
+        width: 2px;
+        height: 90%;
+        background: #525252;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    .panel .ball{
+        position: absolute;
+        bottom: 0;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #cfcfcf;
+        box-shadow:
+        inset -5px -5px 05px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 10px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 20px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 25px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Animation */
+    #panel-first{
+        animation: panel1 4s linear infinite;
+    }
+    @keyframes panel1 {
+        0%{transform: rotate(0deg);}
+        25%{transform: rotate(60deg);}
+        50%{transform: rotate(0deg);}
+        100%{transform: rotate(0deg);}
+    }
+    #panel-last{
+        animation: panel5 4s 2s linear infinite;
+    }
+    @keyframes panel5 {
+        0%{transform: rotate(0deg);}
+        25%{transform: rotate(-60deg);}
+        50%{transform: rotate(0deg);}
+        100%{transform: rotate(0deg);}
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="stick"></div>
+            <div class="panel" id="panel-first">
+                <span class="rope"></span>
+                <div class="ball" style="background: #fcff35;"></div>
+            </div>
+            <div class="panel">
+                <span class="rope"></span>
+                <div class="ball" style="background: #ff3a86;"></div>
+            </div>
+            <div class="panel">
+                <span class="rope"></span>
+                <div class="ball" style="background: #36ff2f;"></div>
+            </div>
+            <div class="panel">
+                <span class="rope"></span>
+                <div class="ball" style="background: #ff2222;"></div>
+            </div>
+            <div class="panel" id="panel-last">
+                <span class="rope"></span>
+                <div class="ball" style="background: #0ac7ff;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

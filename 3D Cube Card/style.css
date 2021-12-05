@@ -170,7 +170,7 @@
     color: var(--color-2);
 }
 
-/* --------------------------- View --------------------------- */
+/* --------------------------- View -------------------------- */
 .main-card.view{
     transform: translate(-50%, -50%) rotateX(-0deg) rotateY(-0deg) !important;
     left: calc(50% - 300px);

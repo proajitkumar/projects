@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Rubik:wght@400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color-1: #f10038;
+    --color-2: #00ade7;
+}
+.container{
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.main-card{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.card{
+    border: 1px solid #464646;
+    border-radius: 5px;
+    height: 100%;
+    background: linear-gradient(to right, #2d323e, #091f3e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 11px 11px #00000075;
+}
+.card .name{
+    position: absolute;
+    transition: all 0.8s 0.5s linear;
+}
+.card .name h1{
+    font-size: 8rem;
+    line-height: 7rem;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px #88888877;
+    color: #8888880e;
+}
+.card .name h1:nth-child(1){
+    letter-spacing: 3.5px;
+}
+.card .detail{
+    position: absolute;
+    left: 2%;
+    color: #c9c9c9;
+    width: 54%;
+    padding: 10px;
+    opacity: 0;
+    user-select: none;
+    transition: all 0.3s linear;
+}
+.card .detail h1{
+    margin-bottom: 10px;
+    color: #c9c9c9;
+}
+.card .detail p{
+    letter-spacing: 0.2px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #c9c9c9;
+}
+.card .detail a{
+    background: #c9c9c9;
+    text-decoration: none;
+    color: #2d323e;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.card .character-col{
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    transition: all 0.3s linear;
+}
+.card .character-col img{
+    width: 100%;
+}
+
+
+/* --------------------------- Hover -------------------------- */
+.main-card:hover .name{
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+.main-card:hover .character-col{
+    width: 240px;
+    height: 143%;
+    right: 0;
+    transform: translateX(20%);
+    transition: all 0.3s linear;
+}
+
+.main-card:hover .detail{
+    opacity: 1;
+    user-select: text;
+    transition: all 0.5s 0.3s linear;
+}
+
+
+
+/* --------------------------- Mobile view -------------------------- */
+
+@media only screen and (max-width: 500px){
+    .main-card {
+        width: calc(100% - 20px);
+        max-width: 300px;
+        height: 250px;
+        transition: all 0.3s linear;
+    }
+    .card .name {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card .detail{
+        width: 100%;
+        left: 0%;
+        top: 0;
+        padding: 10px 10px 0 10px;
+        transition: all 0.3s linear;
+    }
+    .card .detail a {
+        padding: 3px 3px;
+        font-size: 13px;
+    }
+    .card .name h1 {
+        font-size: 6.2rem;
+        word-wrap: break-word;
+        vertical-align: middle;
+    }
+    .card .name h1:nth-child(1) {
+        letter-spacing: 0.8vw;
+    }
+    .card .character-col {
+        width: 200px;
+        height: 250px;
+        overflow: hidden;
+        right: 50%;
+        transform: translateX(50%);
+        transition: all 0.3s linear;
+    }
+
+
+
+    /* --------------------------- Hover -------------------------- */
+    .main-card:hover{
+        height: 400px;
+        transition: all 0.3s linear;
+    }
+    .main-card:hover .card .character-col {
+        width: 250px;
+        height: 280px;
+        overflow: hidden;
+        right: 50%;
+        transform: translateX(50%);
+        transition: all 0.3s linear;
+    }
+}
+
+@media only screen and (max-width: 320px){
+    .card .name h1{
+        font-size: 30vw;
+    }
+}
